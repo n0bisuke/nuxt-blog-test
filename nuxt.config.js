@@ -50,7 +50,7 @@ module.exports = {
   generate: {
     routes() {
       return client
-        .getEntries({ content_type: 'post' })
+        .getEntries({ content_type: 'blogPost' })
         .then(entries => {
           return entries.items.map(entry => {
             return {

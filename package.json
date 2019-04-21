@@ -1,9 +1,8 @@
 {
-  "name": "nuxt-blog-test",
+  "name": "nuxt-contentful",
   "version": "1.0.0",
-  "description": "My gnarly Nuxt.js project",
-  "author": "izm51",
-  "private": true,
+  "description": "Nuxt+Contentful",
+  "author": "n0bisuke",
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
@@ -16,7 +15,7 @@
     "contentful": "^7.5.0",
     "cross-env": "^5.2.0",
     "node-sass": "^4.11.0",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.6.2",
     "sass-loader": "^7.1.0"
   },
   "devDependencies": {

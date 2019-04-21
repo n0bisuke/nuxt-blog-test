@@ -2,8 +2,8 @@
   <article class="article">
     <div class="single">
       <h1 class="post-title">{{ post.fields.title }}</h1>
-      <p class="post-created-at">{{ formatDate(post.sys.createdAt) }}</p>
-      <div class="post-content" v-html="$md.render(post.fields.content)"></div>
+      <p class="post-created-at">{{post.fields.publishDate}}</p>
+      <div class="post-content" v-html="$md.render(post.fields.body)"></div>
     </div>
   </article>
 </template>
@@ -12,11 +12,19 @@
 import client from '~/plugins/contentful'
 
 export default {
+  data() {
+    return {
+      post: {}
+    }
+  },
+
   asyncData({ params, error, payload }) {
     if (payload) return { post: payload }
+    console.log('---')
+    // console.log(this.$nuxt.$route.params.slug)
     return client
       .getEntries({
-        content_type: 'post',
+        content_type: 'blogPost',
         'fields.slug': params.slug,
       })
       .then(entries => {
@@ -24,14 +32,17 @@ export default {
       })
       .catch(e => console.log(e))
   },
+
   head() {
     return {
       title: this.post.fields.title,
     }
   },
+
   mounted() {
     console.log(this.post)
   },
+  
   methods: {
     formatDate(iso) {
       const date = new Date(iso)

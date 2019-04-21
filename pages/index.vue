@@ -3,10 +3,10 @@
     <div class="posts">
       <nuxt-link :to="'posts/'+post.fields.slug" class="post" v-for="(post, index) in posts" :key="index">
         <div class="thumb">
-          <img :src="post.fields.image.fields.file.url">
+          <img :src="post.fields.heroImage.fields.file.url">
         </div>
         <div class="post-text">
-          <p>{{ formatDate(post.sys.createdAt) }}</p>
+          <p>{{ post.fields.publishDate }}</p>
           <h2>{{ post.fields.title }}</h2>
         </div>
       </nuxt-link>
@@ -17,21 +17,30 @@
 <script>
 import client from '~/plugins/contentful'
 export default {
+  data() {
+    return {
+      posts: {}
+    }
+  },
+
+  //記事一覧
   asyncData({ params }) {
     return client
       .getEntries({
-        content_type: 'post',
-        order: '-sys.createdAt',
+        content_type: 'blogPost'
       })
       .then(entries => {
+        console.log(entries.items);
         return { posts: entries.items }
       })
       .catch(e => console.log(e))
   },
+  
   head: {
     title: '記事一覧',
   },
-  methods: {
+
+   methods: {
     formatDate(iso) {
       const date = new Date(iso)
       const yyyy = new String(date.getFullYear())
