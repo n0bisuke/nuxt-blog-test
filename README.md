@@ -1,6 +1,22 @@
 # nuxt-blog-test
 
-> My gnarly Nuxt.js project
+これらを試してみてエラーが出たりしたところを直したver
+
+> https://github.com/izm51/nuxt-blog-test
+> https://izm51.com/posts/nuxt-contentful-netlify-blog-making-2/
+
+## contentful側の設定
+
+![](https://i.gyazo.com/ed304625feba8c932e6de22b76f1eefe.png)
+
+こんな感じ
+
+## .envファイルの追加
+
+```
+CTF_SPACE_ID=xxxx
+CTF_ACCESS_TOKEN=xxxxxx
+```
 
 ## Build Setup
 
